@@ -91,23 +91,35 @@ app.post('/createUser', async (req, res) => {
 /* ข้อ e */
 app.put('/updateUser', async (req, res) => {
     const object = req.body;
-    const id = object._id;
+    const id = object.userID;
     db.connect(function (err) {
         if (err) throw err;
         console.log("Connected!");
-        var sql = "UPDATE users SET userID = "+ id
-        sql += " (username, password, fname, lname, autority, activeflag) VALUES (?)";
-        var values = [
-            object['username'],
-            object['password'],
-            object['fname'],
-            object['lname'],
-            object['autority'],
-            object['activeflag']
-        ];
-        db.query(sql, [values], function (err, result) {
+        var sql = "UPDATE users " +
+            "SET username = '" + object['username'] + "'," +
+            "fname = '" + object['fname'] + "'," +
+            "lname = '" + object['lname'] + "'," +
+            "autority = '" + object['autority'] + "'," +
+            "activeflag = '" + object['activeflag'] + "'" +
+            "WHERE userID = '" + id + "'"
+        console.log(sql)
+        db.query(sql, function (err, result) {
             if (err) throw err;
             console.log("Number of records inserted: " + result.affectedRows);
+        });
+    })
+})
+
+/* ข้อ f */
+app.delete('/deleteUser', async (req, res) => {
+    db.connect(function (err) {
+        const id = req.body.userID;
+        if (err) throw err;
+        var sql = "DELETE FROM users WHERE userID = '" + id + "'";
+        console.log(sql)
+        db.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log("Number of records deleted: " + result.affectedRows);
         });
     })
 })
