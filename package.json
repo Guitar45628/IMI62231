@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.20"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "name": "imi62231",
+  "description": "",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guitar45628/IMI62231.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Guitar45628/IMI62231/issues"
+  },
+  "homepage": "https://github.com/Guitar45628/IMI62231#readme"
+}
